@@ -32,28 +32,13 @@ describe "User pages" do
 
       describe "after submission" do
         before { click_button submit }
-
-        it { should have_title('Sign up') }
-        it { should have_content('error') }
-        it { should have_content('Name can\'t be blank') }
-        it { should have_content('Email can\'t be blank') }
-        it { should have_content('Password can\'t be blank') }
-        it { should have_content('Email is invalid') }
-        it { should have_content('Password is too short (minimum is 6 characters)') }
-        #it { should have_content('Password confirmation doesn\'t match Password') }
-        #it { should have_content('Password confirmation can\'t be blank') }
-
+        signup_errors
       end
     end
 
     describe "with valid information" do
       
-      before do
-        fill_in "Name",         with: "Example User"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
-      end
+      before { valid_signup }
 
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
@@ -65,7 +50,7 @@ describe "User pages" do
 
         it { should have_link('Sign out') }
         it { should have_title(user.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_welcome_message( 'Welcome')}
 
         describe "followed by signout" do
           before { click_link "Sign out" }
