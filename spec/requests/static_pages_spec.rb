@@ -29,12 +29,28 @@ describe "Static pages" do
       end
 
       it "should render the user's feed" do
-        user.feed.each do |item|
-          expect(page).to have_selector("li##{item.id}", text: item.content)
+        user.feed[1..28].each do |item|
+          page.should have_selector("li##{item.id}", text: item.content)
         end
       end
+
+      it "should show delete links for the microposts" do
+         page.should have_selector("a", :text => "delete")
+      end
+
     end
-    
+
+    describe "for non-signed-in users" do
+      before do
+        visit root_path
+      end
+
+      it "should not show delete links for the microposts" do
+         page.should_not have_selector("a", :text => "delete")
+
+      end
+    end
+
   end
 
   describe "Help page" do
