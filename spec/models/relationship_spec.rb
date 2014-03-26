@@ -26,9 +26,7 @@ describe Relationship do
     before { relationship.follower_id = nil }
     it { should_not be_valid }
   end
-
-  # 
-
+  
   # describe "relationship association" do
   #   let(:other_user) { FactoryGirl.create(:user) }
   #   before do

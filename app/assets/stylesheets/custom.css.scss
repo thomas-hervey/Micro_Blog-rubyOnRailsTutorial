@@ -37,6 +37,8 @@ textarea {
   }
 }
 
+
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -231,15 +233,6 @@ aside {
 }
 
 
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
 
 /* Users index */
 
@@ -254,4 +247,16 @@ aside {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }
